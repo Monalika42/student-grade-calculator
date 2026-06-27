@@ -1,22 +1,31 @@
 # Student Grade Calculator
 
-A Java console application that calculates a student's total marks, percentage, and grade based on input for 3 subjects.
+## Version
+Current Version: 2.0
 
-### **Features**
-- Takes student name and marks for Java, DBMS, and OS
-- Calculates total marks out of 300
-- Computes percentage 
-- Assigns grade: A (≥90%), B (80-89%), C (70-79%), D (60-69%), F (<60%)
-- Input validation for marks between 0-100
+## Features
 
-### **Tech Stack**
-- **Language**: Java
-- **Concepts**: Variables, Scanner class, Conditional statements, Arithmetic operations, Input validation
+### Version 1
+✅ Student Name
+✅ 5 Subject Marks
+✅ Total Marks
+✅ Percentage
+✅ Grade
 
-### **How to Run**
-1. Clone repo: `git clone https://github.com/Monalika42/student-grade-calculator.git`
-2. Compile: `javac src/Main.java`
-3. Run: `java src.Main`
-4. Enter name and marks when prompted
+### Version 2
+✅ Highest Mark
+✅ Lowest Mark
+✅ Average Marks
+✅ Result (PASS/FAIL)
+✅ Performance Remark
 
-### **Sample Output**
+## Technologies Used
+- Java
+- IntelliJ IDEA
+- Git
+- GitHub
+
+## Future Improvements
+- Version 3: Arrays
+- Version 4: Loops
+- Version 5: Methods
