@@ -6,54 +6,50 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("=========================================");
-        System.out.println("       STUDENT GRADE CALCULATOR");
-        System.out.println("=========================================");
+        System.out.println("====================================");
+        System.out.println("     STUDENT GRADE CALCULATOR");
+        System.out.println("====================================");
 
-        // Student Name
         System.out.print("Enter Student Name : ");
         String name = sc.nextLine();
 
-        // Subject Marks
-        System.out.print("Enter Java Marks : ");
-        int java = sc.nextInt();
+        String[] subjects = {
+                "Java",
+                "DBMS",
+                "DSA",
+                "OS",
+                "CN"
+        };
 
-        System.out.print("Enter DBMS Marks : ");
-        int dbms = sc.nextInt();
+        int[] marks = new int[5];
 
-        System.out.print("Enter DSA Marks : ");
-        int dsa = sc.nextInt();
+        for (int i = 0; i < marks.length; i++) {
 
-        System.out.print("Enter OS Marks : ");
-        int os = sc.nextInt();
+            System.out.print("Enter " + subjects[i] + " Marks : ");
+            marks[i] = sc.nextInt();
 
-        System.out.print("Enter CN Marks : ");
-        int cn = sc.nextInt();
+        }
 
-        // Calling Methods
-        int total = calculateTotal(java, dbms, dsa, os, cn);
+        int total = calculateTotal(marks);
 
-        double average = calculateAverage(total);
+        double average = calculateAverage(total, marks.length);
 
-        double percentage = calculatePercentage(total);
+        double percentage = calculatePercentage(total, marks.length);
 
-        int highest = findHighest(java, dbms, dsa, os, cn);
+        int highest = findHighest(marks);
 
-        int lowest = findLowest(java, dbms, dsa, os, cn);
+        int lowest = findLowest(marks);
 
         String grade = calculateGrade(percentage);
 
-        String result = calculateResult(java, dbms, dsa, os, cn);
+        String result = calculateResult(marks);
 
         String remark = calculateRemark(percentage);
 
         displayReport(
                 name,
-                java,
-                dbms,
-                dsa,
-                os,
-                cn,
+                subjects,
+                marks,
                 total,
                 average,
                 percentage,
@@ -65,66 +61,64 @@ public class Main {
         );
 
         sc.close();
+
     }
 
     // Calculate Total
-    public static int calculateTotal(int java, int dbms, int dsa, int os, int cn) {
+    public static int calculateTotal(int[] marks) {
 
-        return java + dbms + dsa + os + cn;
+        int total = 0;
 
+        for (int i = 0; i < marks.length; i++) {
+            total += marks[i];
+        }
+
+        return total;
     }
 
     // Calculate Average
-    public static double calculateAverage(int total) {
+    public static double calculateAverage(int total, int numberOfSubjects) {
 
-        return total / 5.0;
+        return (double) total / numberOfSubjects;
 
     }
 
     // Calculate Percentage
-    public static double calculatePercentage(int total) {
+    public static double calculatePercentage(int total, int numberOfSubjects) {
 
-        return total / 5.0;
+        return (double) total / numberOfSubjects;
 
     }
 
-    // Find Highest
-    public static int findHighest(int java, int dbms, int dsa, int os, int cn) {
+    // Find Highest Mark
+    public static int findHighest(int[] marks) {
 
-        int highest = java;
+        int highest = marks[0];
 
-        if (dbms > highest)
-            highest = dbms;
+        for (int i = 1; i < marks.length; i++) {
 
-        if (dsa > highest)
-            highest = dsa;
+            if (marks[i] > highest) {
+                highest = marks[i];
+            }
 
-        if (os > highest)
-            highest = os;
-
-        if (cn > highest)
-            highest = cn;
+        }
 
         return highest;
 
     }
 
-    // Find Lowest
-    public static int findLowest(int java, int dbms, int dsa, int os, int cn) {
+    // Find Lowest Mark
+    public static int findLowest(int[] marks) {
 
-        int lowest = java;
+        int lowest = marks[0];
 
-        if (dbms < lowest)
-            lowest = dbms;
+        for (int i = 1; i < marks.length; i++) {
 
-        if (dsa < lowest)
-            lowest = dsa;
+            if (marks[i] < lowest) {
+                lowest = marks[i];
+            }
 
-        if (os < lowest)
-            lowest = os;
-
-        if (cn < lowest)
-            lowest = cn;
+        }
 
         return lowest;
 
@@ -135,35 +129,31 @@ public class Main {
 
         if (percentage >= 90)
             return "A+";
-
         else if (percentage >= 80)
             return "A";
-
         else if (percentage >= 70)
             return "B";
-
         else if (percentage >= 60)
             return "C";
-
+        else if (percentage >= 50)
+            return "D";
         else
             return "Fail";
 
     }
 
     // Calculate Result
-    public static String calculateResult(int java, int dbms, int dsa, int os, int cn) {
+    public static String calculateResult(int[] marks) {
 
-        if (java >= 35 &&
-                dbms >= 35 &&
-                dsa >= 35 &&
-                os >= 35 &&
-                cn >= 35)
+        for (int i = 0; i < marks.length; i++) {
 
-            return "PASS";
+            if (marks[i] < 35) {
+                return "FAIL";
+            }
 
-        else
+        }
 
-            return "FAIL";
+        return "PASS";
 
     }
 
@@ -172,19 +162,14 @@ public class Main {
 
         if (percentage >= 90)
             return "Excellent";
-
         else if (percentage >= 80)
             return "Very Good";
-
         else if (percentage >= 70)
             return "Good";
-
         else if (percentage >= 60)
             return "Average";
-
-        else if (percentage >= 35)
-            return "Needs Improvement";
-
+        else if (percentage >= 50)
+            return "Need Improvement";
         else
             return "Fail";
 
@@ -193,11 +178,8 @@ public class Main {
     // Display Report
     public static void displayReport(
             String name,
-            int java,
-            int dbms,
-            int dsa,
-            int os,
-            int cn,
+            String[] subjects,
+            int[] marks,
             int total,
             double average,
             double percentage,
@@ -208,38 +190,38 @@ public class Main {
             String remark) {
 
         System.out.println();
-
-        System.out.println("=========================================");
-        System.out.println("           STUDENT REPORT");
-        System.out.println("=========================================");
+        System.out.println("========================================");
+        System.out.println("         STUDENT REPORT");
+        System.out.println("========================================");
 
         System.out.println("Student Name : " + name);
 
-        System.out.println("-----------------------------------------");
+        System.out.println("----------------------------------------");
 
-        System.out.println("Java Marks   : " + java);
-        System.out.println("DBMS Marks   : " + dbms);
-        System.out.println("DSA Marks    : " + dsa);
-        System.out.println("OS Marks     : " + os);
-        System.out.println("CN Marks     : " + cn);
+        // Display Subject Names and Marks
+        for (int i = 0; i < subjects.length; i++) {
 
-        System.out.println("-----------------------------------------");
+            System.out.printf("%-10s : %d%n", subjects[i], marks[i]);
 
-        System.out.println("Total Marks  : " + total);
-        System.out.println("Average      : " + average);
-        System.out.println("Percentage   : " + percentage);
+        }
 
-        System.out.println("-----------------------------------------");
+        System.out.println("----------------------------------------");
+
+        System.out.println("Total Marks : " + total);
+        System.out.println("Average     : " + average);
+        System.out.println("Percentage  : " + percentage);
+
+        System.out.println("----------------------------------------");
 
         System.out.println("Highest Mark : " + highest);
         System.out.println("Lowest Mark  : " + lowest);
 
-        System.out.println("-----------------------------------------");
+        System.out.println("----------------------------------------");
 
-        System.out.println("Grade        : " + grade);
-        System.out.println("Result       : " + result);
-        System.out.println("Remark       : " + remark);
+        System.out.println("Grade  : " + grade);
+        System.out.println("Result : " + result);
+        System.out.println("Remark : " + remark);
 
-        System.out.println("=========================================");
+        System.out.println("========================================");
     }
 }
