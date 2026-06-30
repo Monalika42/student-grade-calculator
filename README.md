@@ -203,45 +203,6 @@ Remark : Very Good
 ========================================
 ```
 
----
-
-# 🎯 Future Improvements
-
-## Version 5
-
-- Dynamic Subject Input
-- User-defined Number of Subjects
-
-## Version 6
-
-- Multiple Student Records
-- Two-Dimensional Arrays
-
-## Version 7
-
-- Object-Oriented Programming
-- Student Class
-- Constructors
-- Objects
-
-## Version 8
-
-- File Handling
-
-## Version 9
-
-- JDBC + MySQL Database
-
-## Version 10
-
-- Spring Boot REST API
-
-## Version 11
-
-- React Frontend
-
----
-
 # 📚 Learning Journey
 
 This project is being developed step by step to improve my Java programming skills and prepare for a Java Full Stack Developer career.
